@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Maintenance Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1 class="heading">Vehicle Maintenance Predictor</h1>
+            <form action="/predict" method="post" class="form">
+                <div class="left">
+                    <label for="vehicle_model">Vehicle Model:</label>
+                    <select id="vehicle_model" name="vehicle_model" required>
+                        <option value="">Select</option>
+                        <option value="bus">Bus</option>
+                        <option value="car">Car</option>
+                        <option value="motorcycle">Motorcycle</option>
+                        <option value="suv">SUV</option>
+                        <option value="truck">Truck</option>
+                        <option value="van">Van</option>
+                    </select>
+
+                    <label for="reported_issues">Enter Reported Issues:</label>
+                    <input type="number" id="reported_issues" name="reported_issues" step="any" required>
+
+                    <label for="vehicle_age">Enter Vehicle Age:</label>
+                    <input type="number" id="vehicle_age" name="vehicle_age" step="any" required>
+
+                    <label for="fuel_type">Fuel Type:</label>
+                    <select id="fuel_type" name="fuel_type" required>
+                        <option value="">Select</option>
+                        <option value="electric">Electric</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                    </select>
+
+                    <label for="transmission_type">Transmission Type:</label>
+                    <select id="transmission_type" name="transmission_type" required>
+                        <option value="">Select</option>
+                        <option value="manual">Manual</option>
+                        <option value="automatic">Automatic</option>
+                    </select>
+                    <label for="fuel_efficiency">Fuel Efficiency:</label>
+                    <input type="number" id="fuel_efficiency" name="fuel_efficiency" step="any" required>
+                </div>
+
+                <div class="right">
+               
+
+                    <label for="days_since_last_service">Days Since Last Service:</label>
+                    <input type="number" id="days_since_last_service" name="days_since_last_service" step="any" required>
+
+                    <label for="maintenance_history">Maintenance History:</label>
+                    <select id="maintenance_history" name="maintenance_history" required>
+                        <option value="">Select</option>
+                        <option value="average">Average</option>
+                        <option value="good">Good</option>
+                        <option value="poor">Poor</option>
+                    </select>
+
+                    <label for="tire_condition">Tire Condition:</label>
+                    <select id="tire_condition" name="tire_condition" required>
+                        <option value="">Select</option>
+                        <option value="good">Good</option>
+                        <option value="new">New</option>
+                        <option value="worn_out">Worn Out</option>
+                    </select>
+
+                    <label for="brake_condition">Brake Condition:</label>
+                    <select id="brake_condition" name="brake_condition" required>
+                        <option value="">Select</option>
+                        <option value="good">Good</option>
+                        <option value="worn_out">Worn Out</option>
+                    </select>
+                    <label for="battery_status">Battery Status:</label>
+                    <select id="battery_status" name="battery_status" required>
+                        <option value="">Select</option>
+                        <option value="good">Good</option>
+                        <option value="new">New</option>
+                        <option value="weak">Weak</option>
+                    </select>
+                </div>
+
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if pred_res %}
+                <h2 class="result">Prediction Result: {{ pred_res }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
